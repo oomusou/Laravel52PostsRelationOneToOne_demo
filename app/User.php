@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -25,11 +26,11 @@ class User extends Authenticatable
     ];
 
     /**
-     * 與[post]為一對一關係
+     * users與posts為一對一關係
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return HasOne
      */
-    public function post()
+    public function post() : HasOne
     {
         return $this->hasOne(Post::class);
     }
