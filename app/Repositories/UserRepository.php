@@ -12,9 +12,10 @@ class UserRepository
      */
     public function getUserPost() : Collection
     {
-        return User::with('post')
+        return User::with(['post' => function ($query) {
+                $query->where('id', '<', '6');
+            }])
             ->where('id', '>', 2)
-            ->where('id', '<', 6)
             ->get();
     }
 }
